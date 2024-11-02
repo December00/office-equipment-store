@@ -34,22 +34,24 @@
             this.PasTextBox = new System.Windows.Forms.TextBox();
             this.Button = new System.Windows.Forms.Button();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.ExitLabel = new System.Windows.Forms.Label();
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.WTDLabel = new System.Windows.Forms.Label();
             this.LogLabel = new System.Windows.Forms.Label();
             this.PasLabel = new System.Windows.Forms.Label();
             this.LogPanel = new System.Windows.Forms.Panel();
             this.PasPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.NavigatePanel = new System.Windows.Forms.Panel();
             this.ToRegLabel = new System.Windows.Forms.Label();
             this.ToAuthLabel = new System.Windows.Forms.Label();
             this.AuthActLabel = new System.Windows.Forms.Label();
             this.RegActLabel = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.TextsPanel = new System.Windows.Forms.Panel();
+            this.TopPanel.SuspendLayout();
             this.LogPanel.SuspendLayout();
             this.PasPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.NavigatePanel.SuspendLayout();
+            this.TextsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ImageLabel
@@ -69,12 +71,13 @@
             // 
             this.LogTextBox.BackColor = System.Drawing.Color.Gray;
             this.LogTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LogTextBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.LogTextBox.Font = new System.Drawing.Font("Arial", 11.2F);
             this.LogTextBox.ForeColor = System.Drawing.Color.White;
-            this.LogTextBox.Location = new System.Drawing.Point(10, 30);
+            this.LogTextBox.Location = new System.Drawing.Point(10, 32);
+            this.LogTextBox.Multiline = true;
             this.LogTextBox.Name = "LogTextBox";
-            this.LogTextBox.Size = new System.Drawing.Size(290, 23);
+            this.LogTextBox.Size = new System.Drawing.Size(290, 22);
             this.LogTextBox.TabIndex = 2;
             // 
             // PasTextBox
@@ -82,11 +85,12 @@
             this.PasTextBox.BackColor = System.Drawing.Color.Gray;
             this.PasTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.PasTextBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.PasTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PasTextBox.Font = new System.Drawing.Font("Arial", 11.2F);
             this.PasTextBox.ForeColor = System.Drawing.Color.White;
-            this.PasTextBox.Location = new System.Drawing.Point(10, 30);
+            this.PasTextBox.Location = new System.Drawing.Point(10, 32);
+            this.PasTextBox.Multiline = true;
             this.PasTextBox.Name = "PasTextBox";
-            this.PasTextBox.Size = new System.Drawing.Size(290, 23);
+            this.PasTextBox.Size = new System.Drawing.Size(290, 22);
             this.PasTextBox.TabIndex = 3;
             // 
             // Button
@@ -94,23 +98,36 @@
             this.Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(87)))));
             this.Button.FlatAppearance.BorderSize = 0;
             this.Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Button.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Button.Font = new System.Drawing.Font("Arial", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.Button.Location = new System.Drawing.Point(90, 510);
+            this.Button.Location = new System.Drawing.Point(135, 500);
             this.Button.Name = "Button";
-            this.Button.Size = new System.Drawing.Size(200, 50);
+            this.Button.Size = new System.Drawing.Size(200, 60);
             this.Button.TabIndex = 4;
             this.Button.Text = "Войти";
             this.Button.UseVisualStyleBackColor = false;
+            this.Button.Click += new System.EventHandler(this.Button_Click);
             // 
             // TopPanel
             // 
+            this.TopPanel.Controls.Add(this.ExitLabel);
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(480, 32);
             this.TopPanel.TabIndex = 5;
             this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
             this.TopPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseMove);
+            // 
+            // ExitLabel
+            // 
+            this.ExitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitLabel.Image = ((System.Drawing.Image)(resources.GetObject("ExitLabel.Image")));
+            this.ExitLabel.Location = new System.Drawing.Point(3, 3);
+            this.ExitLabel.Name = "ExitLabel";
+            this.ExitLabel.Size = new System.Drawing.Size(32, 29);
+            this.ExitLabel.TabIndex = 0;
+            this.ExitLabel.Text = " ";
+            this.ExitLabel.Click += new System.EventHandler(this.ExitLabel_Click);
             // 
             // WelcomeLabel
             // 
@@ -140,7 +157,7 @@
             this.LogLabel.BackColor = System.Drawing.Color.Gray;
             this.LogLabel.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogLabel.ForeColor = System.Drawing.Color.Silver;
-            this.LogLabel.Location = new System.Drawing.Point(15, 11);
+            this.LogLabel.Location = new System.Drawing.Point(12, 10);
             this.LogLabel.Name = "LogLabel";
             this.LogLabel.Size = new System.Drawing.Size(64, 21);
             this.LogLabel.TabIndex = 8;
@@ -152,7 +169,7 @@
             this.PasLabel.BackColor = System.Drawing.Color.Gray;
             this.PasLabel.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PasLabel.ForeColor = System.Drawing.Color.Silver;
-            this.PasLabel.Location = new System.Drawing.Point(12, 11);
+            this.PasLabel.Location = new System.Drawing.Point(12, 10);
             this.PasLabel.Name = "PasLabel";
             this.PasLabel.Size = new System.Drawing.Size(79, 21);
             this.PasLabel.TabIndex = 9;
@@ -173,21 +190,21 @@
             this.PasPanel.BackColor = System.Drawing.Color.Gray;
             this.PasPanel.Controls.Add(this.PasLabel);
             this.PasPanel.Controls.Add(this.PasTextBox);
-            this.PasPanel.Location = new System.Drawing.Point(35, 190);
+            this.PasPanel.Location = new System.Drawing.Point(35, 200);
             this.PasPanel.Name = "PasPanel";
             this.PasPanel.Size = new System.Drawing.Size(300, 60);
             this.PasPanel.TabIndex = 10;
             // 
-            // panel1
+            // NavigatePanel
             // 
-            this.panel1.Controls.Add(this.ToRegLabel);
-            this.panel1.Controls.Add(this.ToAuthLabel);
-            this.panel1.Controls.Add(this.AuthActLabel);
-            this.panel1.Controls.Add(this.RegActLabel);
-            this.panel1.Location = new System.Drawing.Point(80, 48);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 60);
-            this.panel1.TabIndex = 11;
+            this.NavigatePanel.Controls.Add(this.ToRegLabel);
+            this.NavigatePanel.Controls.Add(this.ToAuthLabel);
+            this.NavigatePanel.Controls.Add(this.AuthActLabel);
+            this.NavigatePanel.Controls.Add(this.RegActLabel);
+            this.NavigatePanel.Location = new System.Drawing.Point(80, 48);
+            this.NavigatePanel.Name = "NavigatePanel";
+            this.NavigatePanel.Size = new System.Drawing.Size(220, 60);
+            this.NavigatePanel.TabIndex = 11;
             // 
             // ToRegLabel
             // 
@@ -195,7 +212,7 @@
             this.ToRegLabel.ForeColor = System.Drawing.Color.Silver;
             this.ToRegLabel.Location = new System.Drawing.Point(90, 10);
             this.ToRegLabel.Name = "ToRegLabel";
-            this.ToRegLabel.Size = new System.Drawing.Size(115, 25);
+            this.ToRegLabel.Size = new System.Drawing.Size(130, 25);
             this.ToRegLabel.TabIndex = 13;
             this.ToRegLabel.Text = "Регистрация";
             this.ToRegLabel.Click += new System.EventHandler(this.ToRegLabel_Click);
@@ -216,7 +233,7 @@
             this.AuthActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(87)))));
             this.AuthActLabel.Location = new System.Drawing.Point(15, 12);
             this.AuthActLabel.Name = "AuthActLabel";
-            this.AuthActLabel.Size = new System.Drawing.Size(45, 25);
+            this.AuthActLabel.Size = new System.Drawing.Size(50, 25);
             this.AuthActLabel.TabIndex = 12;
             this.AuthActLabel.Text = " ";
             // 
@@ -226,20 +243,20 @@
             this.RegActLabel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.RegActLabel.Location = new System.Drawing.Point(90, 12);
             this.RegActLabel.Name = "RegActLabel";
-            this.RegActLabel.Size = new System.Drawing.Size(95, 25);
+            this.RegActLabel.Size = new System.Drawing.Size(120, 25);
             this.RegActLabel.TabIndex = 14;
             this.RegActLabel.Text = " ";
             // 
-            // panel2
+            // TextsPanel
             // 
-            this.panel2.Controls.Add(this.PasPanel);
-            this.panel2.Controls.Add(this.WelcomeLabel);
-            this.panel2.Controls.Add(this.WTDLabel);
-            this.panel2.Controls.Add(this.LogPanel);
-            this.panel2.Location = new System.Drawing.Point(50, 190);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(380, 290);
-            this.panel2.TabIndex = 12;
+            this.TextsPanel.Controls.Add(this.PasPanel);
+            this.TextsPanel.Controls.Add(this.WelcomeLabel);
+            this.TextsPanel.Controls.Add(this.WTDLabel);
+            this.TextsPanel.Controls.Add(this.LogPanel);
+            this.TextsPanel.Location = new System.Drawing.Point(50, 190);
+            this.TextsPanel.Name = "TextsPanel";
+            this.TextsPanel.Size = new System.Drawing.Size(390, 290);
+            this.TextsPanel.TabIndex = 12;
             // 
             // RegAuthForm
             // 
@@ -247,21 +264,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.ClientSize = new System.Drawing.Size(1000, 700);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.NavigatePanel);
             this.Controls.Add(this.TopPanel);
             this.Controls.Add(this.Button);
             this.Controls.Add(this.ImageLabel);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.TextsPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegAuthForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.TopPanel.ResumeLayout(false);
             this.LogPanel.ResumeLayout(false);
             this.LogPanel.PerformLayout();
             this.PasPanel.ResumeLayout(false);
             this.PasPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.NavigatePanel.ResumeLayout(false);
+            this.TextsPanel.ResumeLayout(false);
+            this.TextsPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -278,12 +297,13 @@
         private System.Windows.Forms.Label PasLabel;
         private System.Windows.Forms.Panel LogPanel;
         private System.Windows.Forms.Panel PasPanel;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel NavigatePanel;
         private System.Windows.Forms.Label ToRegLabel;
         private System.Windows.Forms.Label ToAuthLabel;
         private System.Windows.Forms.Label AuthActLabel;
         private System.Windows.Forms.Label RegActLabel;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel TextsPanel;
+        private System.Windows.Forms.Label ExitLabel;
     }
 }
 

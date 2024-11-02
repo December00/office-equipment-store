@@ -2,39 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using АРМ_продавца_офисной_техники.Classes;
 
 namespace АРМ_продавца_офисной_техники
 {
     public partial class RegAuthForm : Form
     {
         Point lastpoint;
+        bool auth = true;
+        User user;
         public RegAuthForm()
         {
             InitializeComponent();
             
         }
-        /* private void InitializeTextBox()
-        {
-            TextBox LogTextBox = new TextBox();
-            LogTextBox.Multiline = false;
-            LogTextBox.AutoSize = false;
-            LogTextBox.Location = new Point(65, 210);
-            LogTextBox.Size = new Size(220, 60);
-            this.Controls.Add(LogTextBox);
-
-            TextBox PasTextBox = new TextBox();
-            PasTextBox.AutoSize = false;
-            PasTextBox.Location = new Point(65, 280);
-            PasTextBox.Size = new Size(220, 60);
-            PasTextBox.Multiline = false;
-            this.Controls.Add(PasTextBox);
-        }
-        */
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
         {
             lastpoint = new Point(e.X, e.Y);    
@@ -72,6 +59,7 @@ namespace АРМ_продавца_офисной_техники
             this.RegActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(87))))); ;
             this.AuthActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.WTDLabel.Text = "Зарегистрируйтесь, чтобы продолжить";
+            auth = false;
         }
 
         private void ToAuthLabel_Click(object sender, EventArgs e)
@@ -81,6 +69,38 @@ namespace АРМ_продавца_офисной_техники
             this.RegActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96))))); ;
             this.AuthActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(87)))));
             this.WTDLabel.Text = "Войдите, чтобы продолжить";
+            auth = true;
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            user = new User(this.LogTextBox.Text, this.PasTextBox.Text);
+            if (auth)
+            {
+                if (user.Authorization())
+                {
+                    if (user.login == "admin")
+                    {
+                        AdminForm form = new AdminForm();
+                        form.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        CatalogForm catalog = new CatalogForm(user, this);
+                        catalog.Show();
+                        this.Hide();
+                    }
+                }
+            }
+            else
+                user.Registration();
+            
+        }
+
+        private void ExitLabel_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

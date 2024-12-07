@@ -282,7 +282,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.Fill();
             this.LoginLabel.Text = user.login;
             Reload();
-
+            Reset();
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
@@ -383,6 +383,7 @@ namespace АРМ_продавца_офисной_техники
             this.PageLabel.Text = multiplier.ToString();
             techniqueList.Fill();
             this.ChosenCategoryLabel.Text = "Каталог";
+            this.sortComboBox.SelectedIndex = -1;
             Reset();
             Reload();
         }
@@ -466,11 +467,29 @@ namespace АРМ_продавца_офисной_техники
             form.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+       
+
+        private void BasketButton_Click(object sender, EventArgs e)
         {
             BasketForm form = new BasketForm(user, RegForm);
             form.Show();
             this.Close();
         }
+
+        private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sortComboBox.SelectedItem.ToString() == "По возрастанию цены") {
+                techniqueList.ListSortByCost();
+                Reload();
+                return;
+            }
+            if (sortComboBox.SelectedItem.ToString() == "По убыванию цены") {
+                techniqueList.ListReverseSortByCost();
+                Reload();
+                return;
+            }
+
+        }
+        
     }
 }

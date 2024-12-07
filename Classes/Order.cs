@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -110,6 +111,52 @@ namespace АРМ_продавца_офисной_техники.Classes
 
                 MessageBox.Show("Нельзя оформить заказ с пустой карзиной");
                 return false;
+            }
+        }
+        public void DeleteOrder()
+        {
+            DB db = new DB();
+            db.openConnection();
+            try
+            {
+                MySqlCommand command = new MySqlCommand("DELETE FROM orders WHERE ID = @Id", db.getConnection());
+                command.Parameters.AddWithValue("@Id", this.Id);
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    MessageBox.Show("Заказ удалён");
+                }
+                else
+                {
+                    MessageBox.Show("Заказ не найден");
+                }
+            }
+            catch (Exception ex ){ MessageBox.Show(ex.ToString()); }
+
+           db.closeConnection();
+
+        }
+        public void AcceptOrder() { 
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog.FileName = $"Order" + Id + ".txt";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+                    
+                    string orderInfo = $"Order ID: {Id}\n" +
+                                       $"Name: {name}\n" +
+                                       $"Address: {address}\n" +
+                                       $"Phone Number: {phoneNumber}\n" +
+                                       $"Content: {content}\n" +
+                                       $"Final Cost: {finalCost}\n";
+
+                    
+                    File.WriteAllText(saveFileDialog.FileName, orderInfo);
+                    DeleteOrder();
+                
             }
         }
     }

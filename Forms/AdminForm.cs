@@ -14,17 +14,30 @@ namespace АРМ_продавца_офисной_техники
     public partial class AdminForm : Form
     {
         OrderList orderList;
+        TechniqueList techniqueList;
         int curOrder = 0;
         Point lastpoint;
         public void Reload() 
         {
-            Order order = orderList.list[curOrder];
-            this.OrderNumberLabel.Text = "Заказ №" + order.Id;
-            this.ContentLabel.Text = "Содержимое заказа: " + order.content;
-            this.CostLabel.Text = order.finalCost + ",00 BYN";
-            this.AddressLabel.Text = order.address;
-            this.PhoneLabel.Text = order.phoneNumber;
-            this.FIOLabel.Text = order.name;
+            if (orderList.list[curOrder] != null)
+            {
+                Order order = orderList.list[curOrder];
+                this.OrderNumberLabel.Text = "Заказ №" + order.Id;
+                this.ContentLabel.Text = "Содержимое заказа: " + order.content;
+                this.CostLabel.Text = order.finalCost + ",00 BYN";
+                this.AddressLabel.Text = order.address;
+                this.PhoneLabel.Text = order.phoneNumber;
+                this.FIOLabel.Text = order.name;
+            }
+            else
+            {
+                this.OrderNumberLabel.Text = "Открытых заказов нет";
+                this.ContentLabel.Text = "";
+                this.CostLabel.Text = "0,00 BYN";
+                this.AddressLabel.Text = "";
+                this.PhoneLabel.Text = "";
+                this.FIOLabel.Text = "";
+            }
         }
         public AdminForm()
         {
@@ -35,6 +48,15 @@ namespace АРМ_продавца_офисной_техники
         {
             orderList = new OrderList();
             orderList.Fill();
+            techniqueList = new TechniqueList();
+            techniqueList.Fill();
+            for (int i = 0; i < techniqueList.maxLength; i++)
+            {
+
+                this.TechniqueComboBox.Items.Add(techniqueList.list[i].manufacturer + " " + techniqueList.list[i].model);
+            }
+            this.TechniqueComboBox.Items.Add("Добавить...");
+            UpdateButtonStates();
             Reload();
 
         }
@@ -46,26 +68,30 @@ namespace АРМ_продавца_офисной_техники
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-            curOrder++;
-            Reload();
-            this.PrevButton.Enabled = true;
-            if (orderList.maxLength <= curOrder + 1)
+            if (curOrder < orderList.maxLength - 1) 
             {
-                this.NextButton.Enabled = false;
+                curOrder++;
+                Reload();
+                UpdateButtonStates();
             }
-            
+
         }
 
         private void PrevButton_Click(object sender, EventArgs e)
         {
-            curOrder--;
-            Reload();
-            this.NextButton.Enabled = true;
-            if (0 <= curOrder)
+            if (curOrder > 0)  
             {
-                this.PrevButton.Enabled = false;
+                curOrder--;
+                Reload();
+                UpdateButtonStates();
             }
         }
+        private void UpdateButtonStates()
+        {
+            this.PrevButton.Enabled = curOrder > 0; 
+            this.NextButton.Enabled = curOrder < orderList.maxLength - 1; 
+        }
+
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -80,6 +106,91 @@ namespace АРМ_продавца_офисной_техники
                 this.Top += e.Y - lastpoint.Y;
 
             }
+        }
+
+        private void OrderCancelButton_Click(object sender, EventArgs e)
+        {
+            if(orderList.list[curOrder] == null)
+            {
+                MessageBox.Show("Заказов нет");
+                orderList.Fill();
+                Reload();
+                
+                return;
+            }
+             
+            orderList.list[curOrder].DeleteOrder(); 
+            orderList = new OrderList();
+            orderList.Fill();
+            Reload();
+            UpdateButtonStates();
+            curOrder = 0;
+        }
+
+        private void OrderAcceptButton_Click(object sender, EventArgs e)
+        {
+            if (orderList.list[curOrder] == null)
+            {
+                MessageBox.Show("Заказов нет");
+                Reload();
+                return;
+            }
+            orderList.list[curOrder].AcceptOrder();
+            orderList = new OrderList();
+            orderList.Fill();
+            Reload();
+            UpdateButtonStates();
+            curOrder = 0;
+        }
+
+        private void TechniqueComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < techniqueList.maxLength; i++)
+            {
+                if (techniqueList.list[i].manufacturer + " " + techniqueList.list[i].model == this.TechniqueComboBox.Text)
+                {
+                    this.ManufacturerTextBox.Text = techniqueList.list[i].manufacturer;
+                    this.ModelTextBox.Text = techniqueList.list[i].model;
+                    this.DescriptionTextBox.Text = techniqueList.list[i].description;
+                    this.TypeTextBox.Text = techniqueList.list[i].type;
+                    this.CostTextBox.Text = techniqueList.list[i].cost.ToString();
+                    this.AmountTextBox.Text = techniqueList.list[i].amount.ToString();
+                }
+                
+            }
+        }
+
+        private void ItemButton_Click(object sender, EventArgs e)
+        {
+            Technique tech;
+            if(this.TechniqueComboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Сделайте выбор в выпадающем списке");
+                return;
+            }
+            try
+            {
+                tech = new Technique(this.TypeTextBox.Text, this.ManufacturerTextBox.Text, this.ModelTextBox.Text, this.DescriptionTextBox.Text, int.Parse(this.CostTextBox.Text), int.Parse(this.AmountTextBox.Text));
+                if (this.TechniqueComboBox.SelectedItem.ToString() == "Добавить...")
+                {
+                    tech.Add();
+                    this.ManufacturerTextBox.Text = "";
+                    this.ModelTextBox.Text = "";
+                    this.DescriptionTextBox.Text = "";
+                    this.TypeTextBox.Text = "";
+                    this.CostTextBox.Text = "";
+                    this.AmountTextBox.Text = "";
+                }
+                else
+                {
+                    tech.Update();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex);
+            }
+            
         }
     }
 }

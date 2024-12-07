@@ -90,6 +90,7 @@
             this.Item9CostLabel = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sortComboBox = new System.Windows.Forms.ComboBox();
             this.PageLabel = new System.Windows.Forms.Label();
             this.PrevButton = new System.Windows.Forms.Button();
             this.ChosenCategoryLabel = new System.Windows.Forms.Label();
@@ -104,6 +105,7 @@
             this.PCCategory = new System.Windows.Forms.Label();
             this.CategoryPanel = new System.Windows.Forms.Panel();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.TopPanel.SuspendLayout();
             this.Item3Panel.SuspendLayout();
             this.Item1Panel.SuspendLayout();
@@ -157,20 +159,20 @@
             // 
             this.BasketButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BasketButton.Image = ((System.Drawing.Image)(resources.GetObject("BasketButton.Image")));
-            this.BasketButton.Location = new System.Drawing.Point(1362, 0);
+            this.BasketButton.Location = new System.Drawing.Point(1385, 5);
             this.BasketButton.Name = "BasketButton";
-            this.BasketButton.Size = new System.Drawing.Size(50, 47);
+            this.BasketButton.Size = new System.Drawing.Size(50, 40);
             this.BasketButton.TabIndex = 2;
             this.BasketButton.Text = " ";
-            this.BasketButton.Click += new System.EventHandler(this.label1_Click);
+            this.BasketButton.Click += new System.EventHandler(this.BasketButton_Click);
             // 
             // ExitLabel
             // 
             this.ExitLabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitLabel.Image = ((System.Drawing.Image)(resources.GetObject("ExitLabel.Image")));
-            this.ExitLabel.Location = new System.Drawing.Point(1418, 5);
+            this.ExitLabel.Location = new System.Drawing.Point(1450, 5);
             this.ExitLabel.Name = "ExitLabel";
-            this.ExitLabel.Size = new System.Drawing.Size(50, 38);
+            this.ExitLabel.Size = new System.Drawing.Size(50, 40);
             this.ExitLabel.TabIndex = 1;
             this.ExitLabel.Text = " ";
             this.ExitLabel.Click += new System.EventHandler(this.ExitLabel_Click);
@@ -825,7 +827,10 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.sortComboBox);
             this.panel1.Controls.Add(this.PageLabel);
             this.panel1.Controls.Add(this.PrevButton);
             this.panel1.Controls.Add(this.ChosenCategoryLabel);
@@ -841,15 +846,32 @@
             this.panel1.Controls.Add(this.Item9Panel);
             this.panel1.Location = new System.Drawing.Point(400, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1100, 1150);
+            this.panel1.Size = new System.Drawing.Size(1100, 870);
             this.panel1.TabIndex = 5;
+            // 
+            // sortComboBox
+            // 
+            this.sortComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.sortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sortComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.sortComboBox.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sortComboBox.FormattingEnabled = true;
+            this.sortComboBox.Items.AddRange(new object[] {
+            "По возрастанию цены",
+            "По убыванию цены"});
+            this.sortComboBox.Location = new System.Drawing.Point(817, 19);
+            this.sortComboBox.Name = "sortComboBox";
+            this.sortComboBox.Size = new System.Drawing.Size(221, 30);
+            this.sortComboBox.TabIndex = 13;
+            this.sortComboBox.TabStop = false;
+            this.sortComboBox.SelectedIndexChanged += new System.EventHandler(this.sortComboBox_SelectedIndexChanged);
             // 
             // PageLabel
             // 
             this.PageLabel.AutoSize = true;
             this.PageLabel.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.PageLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.PageLabel.Location = new System.Drawing.Point(520, 1034);
+            this.PageLabel.Location = new System.Drawing.Point(520, 1038);
             this.PageLabel.Name = "PageLabel";
             this.PageLabel.Size = new System.Drawing.Size(30, 32);
             this.PageLabel.TabIndex = 16;
@@ -862,7 +884,7 @@
             this.PrevButton.FlatAppearance.BorderSize = 0;
             this.PrevButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PrevButton.Image = ((System.Drawing.Image)(resources.GetObject("PrevButton.Image")));
-            this.PrevButton.Location = new System.Drawing.Point(420, 1025);
+            this.PrevButton.Location = new System.Drawing.Point(415, 1030);
             this.PrevButton.Name = "PrevButton";
             this.PrevButton.Size = new System.Drawing.Size(43, 48);
             this.PrevButton.TabIndex = 15;
@@ -887,7 +909,7 @@
             this.NextButton.FlatAppearance.BorderSize = 0;
             this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextButton.Image = ((System.Drawing.Image)(resources.GetObject("NextButton.Image")));
-            this.NextButton.Location = new System.Drawing.Point(600, 1025);
+            this.NextButton.Location = new System.Drawing.Point(605, 1030);
             this.NextButton.Name = "NextButton";
             this.NextButton.Size = new System.Drawing.Size(48, 48);
             this.NextButton.TabIndex = 14;
@@ -1028,11 +1050,18 @@
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(258, 1038);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 80);
+            this.label1.TabIndex = 17;
+            this.label1.Text = " ";
+            // 
             // CatalogForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.ClientSize = new System.Drawing.Size(1500, 900);
@@ -1152,5 +1181,7 @@
         private System.Windows.Forms.Label BasketButton;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox sortComboBox;
+        private System.Windows.Forms.Label label1;
     }
 }

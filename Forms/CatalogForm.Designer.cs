@@ -90,6 +90,7 @@
             this.Item9CostLabel = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.sortComboBox = new System.Windows.Forms.ComboBox();
             this.PageLabel = new System.Windows.Forms.Label();
             this.PrevButton = new System.Windows.Forms.Button();
@@ -105,7 +106,9 @@
             this.PCCategory = new System.Windows.Forms.Label();
             this.CategoryPanel = new System.Windows.Forms.Panel();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.SearchTextBox = new System.Windows.Forms.TextBox();
+            this.PhoneLabel = new System.Windows.Forms.Label();
+            this.PhonePanel = new System.Windows.Forms.Panel();
             this.TopPanel.SuspendLayout();
             this.Item3Panel.SuspendLayout();
             this.Item1Panel.SuspendLayout();
@@ -118,6 +121,7 @@
             this.Item9Panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.CategoryPanel.SuspendLayout();
+            this.PhonePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -186,10 +190,12 @@
             this.Item3Panel.Controls.Add(this.Item3pic);
             this.Item3Panel.Controls.Add(this.Item3Button);
             this.Item3Panel.Controls.Add(this.Item3CostLabel);
+            this.Item3Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item3Panel.Location = new System.Drawing.Point(718, 65);
             this.Item3Panel.Name = "Item3Panel";
             this.Item3Panel.Size = new System.Drawing.Size(320, 300);
             this.Item3Panel.TabIndex = 1;
+            this.Item3Panel.Click += new System.EventHandler(this.Item3Button_Click);
             // 
             // Item3DescrlLabel
             // 
@@ -201,6 +207,7 @@
             this.Item3DescrlLabel.TabIndex = 14;
             this.Item3DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item3DescrlLabel.Click += new System.EventHandler(this.Item3Button_Click);
             // 
             // Item3ModelLabel
             // 
@@ -211,6 +218,7 @@
             this.Item3ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item3ModelLabel.TabIndex = 13;
             this.Item3ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item3ModelLabel.Click += new System.EventHandler(this.Item3Button_Click);
             // 
             // Item3pic
             // 
@@ -220,6 +228,7 @@
             this.Item3pic.Size = new System.Drawing.Size(180, 150);
             this.Item3pic.TabIndex = 12;
             this.Item3pic.Text = " ";
+            this.Item3pic.Click += new System.EventHandler(this.Item3Button_Click);
             // 
             // Item3Button
             // 
@@ -247,6 +256,7 @@
             this.Item3CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item3CostLabel.TabIndex = 10;
             this.Item3CostLabel.Text = "2049,00 BYN";
+            this.Item3CostLabel.Click += new System.EventHandler(this.Item3Button_Click);
             // 
             // Item1Panel
             // 
@@ -257,10 +267,12 @@
             this.Item1Panel.Controls.Add(this.Item1pic);
             this.Item1Panel.Controls.Add(this.Item1Button);
             this.Item1Panel.Controls.Add(this.Item1CostLabel);
+            this.Item1Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item1Panel.Location = new System.Drawing.Point(38, 65);
             this.Item1Panel.Name = "Item1Panel";
             this.Item1Panel.Size = new System.Drawing.Size(320, 300);
             this.Item1Panel.TabIndex = 2;
+            this.Item1Panel.Click += new System.EventHandler(this.Item1Button_Click);
             // 
             // Item1DescrlLabel
             // 
@@ -272,6 +284,7 @@
             this.Item1DescrlLabel.TabIndex = 4;
             this.Item1DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item1DescrlLabel.Click += new System.EventHandler(this.Item1Button_Click);
             // 
             // Item1ModelLabel
             // 
@@ -282,6 +295,7 @@
             this.Item1ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item1ModelLabel.TabIndex = 3;
             this.Item1ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item1ModelLabel.Click += new System.EventHandler(this.Item1Button_Click);
             // 
             // Item1pic
             // 
@@ -291,6 +305,7 @@
             this.Item1pic.Size = new System.Drawing.Size(180, 150);
             this.Item1pic.TabIndex = 2;
             this.Item1pic.Text = " ";
+            this.Item1pic.Click += new System.EventHandler(this.Item1Button_Click);
             // 
             // Item1Button
             // 
@@ -318,6 +333,7 @@
             this.Item1CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item1CostLabel.TabIndex = 0;
             this.Item1CostLabel.Text = "2049,00 BYN";
+            this.Item1CostLabel.Click += new System.EventHandler(this.Item1Button_Click);
             // 
             // Item2Panel
             // 
@@ -328,10 +344,12 @@
             this.Item2Panel.Controls.Add(this.Item2pic);
             this.Item2Panel.Controls.Add(this.Item2Button);
             this.Item2Panel.Controls.Add(this.Item2CostLabel);
+            this.Item2Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item2Panel.Location = new System.Drawing.Point(378, 65);
             this.Item2Panel.Name = "Item2Panel";
             this.Item2Panel.Size = new System.Drawing.Size(320, 300);
             this.Item2Panel.TabIndex = 2;
+            this.Item2Panel.Click += new System.EventHandler(this.Item2Button_Click);
             // 
             // Item2DescrlLabel
             // 
@@ -343,6 +361,7 @@
             this.Item2DescrlLabel.TabIndex = 9;
             this.Item2DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item2DescrlLabel.Click += new System.EventHandler(this.Item2Button_Click);
             // 
             // Item2ModelLabel
             // 
@@ -353,6 +372,7 @@
             this.Item2ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item2ModelLabel.TabIndex = 8;
             this.Item2ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item2ModelLabel.Click += new System.EventHandler(this.Item2Button_Click);
             // 
             // Item2pic
             // 
@@ -362,6 +382,7 @@
             this.Item2pic.Size = new System.Drawing.Size(180, 150);
             this.Item2pic.TabIndex = 7;
             this.Item2pic.Text = " ";
+            this.Item2pic.Click += new System.EventHandler(this.Item2Button_Click);
             // 
             // Item2Button
             // 
@@ -389,6 +410,7 @@
             this.Item2CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item2CostLabel.TabIndex = 5;
             this.Item2CostLabel.Text = "2049,00 BYN";
+            this.Item2CostLabel.Click += new System.EventHandler(this.Item2Button_Click);
             // 
             // Item4Panel
             // 
@@ -399,10 +421,12 @@
             this.Item4Panel.Controls.Add(this.Item4pic);
             this.Item4Panel.Controls.Add(this.Item4Button);
             this.Item4Panel.Controls.Add(this.Item4CostLabel);
+            this.Item4Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item4Panel.Location = new System.Drawing.Point(38, 385);
             this.Item4Panel.Name = "Item4Panel";
             this.Item4Panel.Size = new System.Drawing.Size(320, 300);
             this.Item4Panel.TabIndex = 3;
+            this.Item4Panel.Click += new System.EventHandler(this.Item4Button_Click);
             // 
             // Item4DescrlLabel
             // 
@@ -414,6 +438,7 @@
             this.Item4DescrlLabel.TabIndex = 14;
             this.Item4DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item4DescrlLabel.Click += new System.EventHandler(this.Item4Button_Click);
             // 
             // Item4ModelLabel
             // 
@@ -424,6 +449,7 @@
             this.Item4ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item4ModelLabel.TabIndex = 13;
             this.Item4ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item4ModelLabel.Click += new System.EventHandler(this.Item4Button_Click);
             // 
             // Item4pic
             // 
@@ -433,6 +459,7 @@
             this.Item4pic.Size = new System.Drawing.Size(180, 150);
             this.Item4pic.TabIndex = 12;
             this.Item4pic.Text = " ";
+            this.Item4pic.Click += new System.EventHandler(this.Item4Button_Click);
             // 
             // Item4Button
             // 
@@ -460,6 +487,7 @@
             this.Item4CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item4CostLabel.TabIndex = 10;
             this.Item4CostLabel.Text = "2049,00 BYN";
+            this.Item4CostLabel.Click += new System.EventHandler(this.Item4Button_Click);
             // 
             // Item5Panel
             // 
@@ -470,10 +498,12 @@
             this.Item5Panel.Controls.Add(this.Item5pic);
             this.Item5Panel.Controls.Add(this.Item5Button);
             this.Item5Panel.Controls.Add(this.Item5CostLabel);
+            this.Item5Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item5Panel.Location = new System.Drawing.Point(378, 385);
             this.Item5Panel.Name = "Item5Panel";
             this.Item5Panel.Size = new System.Drawing.Size(320, 300);
             this.Item5Panel.TabIndex = 3;
+            this.Item5Panel.Click += new System.EventHandler(this.Item5Button_Click);
             // 
             // Item5DescrlLabel
             // 
@@ -485,6 +515,7 @@
             this.Item5DescrlLabel.TabIndex = 14;
             this.Item5DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item5DescrlLabel.Click += new System.EventHandler(this.Item5Button_Click);
             // 
             // Item5ModelLabel
             // 
@@ -495,6 +526,7 @@
             this.Item5ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item5ModelLabel.TabIndex = 13;
             this.Item5ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item5ModelLabel.Click += new System.EventHandler(this.Item5Button_Click);
             // 
             // Item5pic
             // 
@@ -504,6 +536,7 @@
             this.Item5pic.Size = new System.Drawing.Size(180, 150);
             this.Item5pic.TabIndex = 12;
             this.Item5pic.Text = " ";
+            this.Item5pic.Click += new System.EventHandler(this.Item5Button_Click);
             // 
             // Item5Button
             // 
@@ -531,6 +564,7 @@
             this.Item5CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item5CostLabel.TabIndex = 10;
             this.Item5CostLabel.Text = "2049,00 BYN";
+            this.Item5CostLabel.Click += new System.EventHandler(this.Item5Button_Click);
             // 
             // Item6Panel
             // 
@@ -541,10 +575,12 @@
             this.Item6Panel.Controls.Add(this.Item6pic);
             this.Item6Panel.Controls.Add(this.Item6Button);
             this.Item6Panel.Controls.Add(this.Item6CostLabel);
+            this.Item6Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item6Panel.Location = new System.Drawing.Point(718, 385);
             this.Item6Panel.Name = "Item6Panel";
             this.Item6Panel.Size = new System.Drawing.Size(320, 300);
             this.Item6Panel.TabIndex = 3;
+            this.Item6Panel.Click += new System.EventHandler(this.Item6Button_Click);
             // 
             // Item6DescrlLabel
             // 
@@ -556,6 +592,7 @@
             this.Item6DescrlLabel.TabIndex = 14;
             this.Item6DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item6DescrlLabel.Click += new System.EventHandler(this.Item6Button_Click);
             // 
             // Item6ModelLabel
             // 
@@ -566,6 +603,7 @@
             this.Item6ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item6ModelLabel.TabIndex = 13;
             this.Item6ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item6ModelLabel.Click += new System.EventHandler(this.Item6Button_Click);
             // 
             // Item6pic
             // 
@@ -575,6 +613,7 @@
             this.Item6pic.Size = new System.Drawing.Size(180, 150);
             this.Item6pic.TabIndex = 12;
             this.Item6pic.Text = " ";
+            this.Item6pic.Click += new System.EventHandler(this.Item6Button_Click);
             // 
             // Item6Button
             // 
@@ -602,6 +641,7 @@
             this.Item6CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item6CostLabel.TabIndex = 10;
             this.Item6CostLabel.Text = "2049,00 BYN";
+            this.Item6CostLabel.Click += new System.EventHandler(this.Item6Button_Click);
             // 
             // Item7Panel
             // 
@@ -612,10 +652,12 @@
             this.Item7Panel.Controls.Add(this.Item7pic);
             this.Item7Panel.Controls.Add(this.Item7Button);
             this.Item7Panel.Controls.Add(this.Item7CostLabel);
+            this.Item7Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item7Panel.Location = new System.Drawing.Point(38, 705);
             this.Item7Panel.Name = "Item7Panel";
             this.Item7Panel.Size = new System.Drawing.Size(320, 300);
             this.Item7Panel.TabIndex = 3;
+            this.Item7Panel.Click += new System.EventHandler(this.Item7Button_Click);
             // 
             // Item7DescrlLabel
             // 
@@ -627,6 +669,7 @@
             this.Item7DescrlLabel.TabIndex = 14;
             this.Item7DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item7DescrlLabel.Click += new System.EventHandler(this.Item7Button_Click);
             // 
             // Item7ModelLabel
             // 
@@ -637,6 +680,7 @@
             this.Item7ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item7ModelLabel.TabIndex = 13;
             this.Item7ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item7ModelLabel.Click += new System.EventHandler(this.Item7Button_Click);
             // 
             // Item7pic
             // 
@@ -646,6 +690,7 @@
             this.Item7pic.Size = new System.Drawing.Size(180, 150);
             this.Item7pic.TabIndex = 12;
             this.Item7pic.Text = " ";
+            this.Item7pic.Click += new System.EventHandler(this.Item7Button_Click);
             // 
             // Item7Button
             // 
@@ -673,6 +718,7 @@
             this.Item7CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item7CostLabel.TabIndex = 10;
             this.Item7CostLabel.Text = "2049,00 BYN";
+            this.Item7CostLabel.Click += new System.EventHandler(this.Item7Button_Click);
             // 
             // Item8Panel
             // 
@@ -683,10 +729,12 @@
             this.Item8Panel.Controls.Add(this.Item8pic);
             this.Item8Panel.Controls.Add(this.Item8Button);
             this.Item8Panel.Controls.Add(this.Item8CostLabel);
+            this.Item8Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item8Panel.Location = new System.Drawing.Point(378, 705);
             this.Item8Panel.Name = "Item8Panel";
             this.Item8Panel.Size = new System.Drawing.Size(320, 300);
             this.Item8Panel.TabIndex = 3;
+            this.Item8Panel.Click += new System.EventHandler(this.Item8Button_Click);
             // 
             // Item8DescrlLabel
             // 
@@ -698,6 +746,7 @@
             this.Item8DescrlLabel.TabIndex = 14;
             this.Item8DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item8DescrlLabel.Click += new System.EventHandler(this.Item8Button_Click);
             // 
             // Item8ModelLabel
             // 
@@ -708,6 +757,7 @@
             this.Item8ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item8ModelLabel.TabIndex = 13;
             this.Item8ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item8ModelLabel.Click += new System.EventHandler(this.Item8Button_Click);
             // 
             // Item8pic
             // 
@@ -717,6 +767,7 @@
             this.Item8pic.Size = new System.Drawing.Size(180, 150);
             this.Item8pic.TabIndex = 12;
             this.Item8pic.Text = " ";
+            this.Item8pic.Click += new System.EventHandler(this.Item8Button_Click);
             // 
             // Item8Button
             // 
@@ -744,6 +795,7 @@
             this.Item8CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item8CostLabel.TabIndex = 10;
             this.Item8CostLabel.Text = "2049,00 BYN";
+            this.Item8CostLabel.Click += new System.EventHandler(this.Item8Button_Click);
             // 
             // Item9Panel
             // 
@@ -754,10 +806,12 @@
             this.Item9Panel.Controls.Add(this.Item9pic);
             this.Item9Panel.Controls.Add(this.Item9Button);
             this.Item9Panel.Controls.Add(this.Item9CostLabel);
+            this.Item9Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Item9Panel.Location = new System.Drawing.Point(718, 705);
             this.Item9Panel.Name = "Item9Panel";
             this.Item9Panel.Size = new System.Drawing.Size(320, 300);
             this.Item9Panel.TabIndex = 3;
+            this.Item9Panel.Click += new System.EventHandler(this.Item9Button_Click);
             // 
             // Item9DescrlLabel
             // 
@@ -769,6 +823,7 @@
             this.Item9DescrlLabel.TabIndex = 14;
             this.Item9DescrlLabel.Text = "15.6\" 1920 x 1080, IPS, 60 Гц, Intel Core i5 1235U, 16 ГБ DDR4, SSD 512 ГБ, видео" +
     "карта встроенная";
+            this.Item9DescrlLabel.Click += new System.EventHandler(this.Item9Button_Click);
             // 
             // Item9ModelLabel
             // 
@@ -779,6 +834,7 @@
             this.Item9ModelLabel.Size = new System.Drawing.Size(290, 22);
             this.Item9ModelLabel.TabIndex = 13;
             this.Item9ModelLabel.Text = "Asus Vivobook 15 X1504ZA-BQ1120";
+            this.Item9ModelLabel.Click += new System.EventHandler(this.Item9Button_Click);
             // 
             // Item9pic
             // 
@@ -788,6 +844,7 @@
             this.Item9pic.Size = new System.Drawing.Size(180, 150);
             this.Item9pic.TabIndex = 12;
             this.Item9pic.Text = " ";
+            this.Item9pic.Click += new System.EventHandler(this.Item9Button_Click);
             // 
             // Item9Button
             // 
@@ -815,6 +872,7 @@
             this.Item9CostLabel.Size = new System.Drawing.Size(107, 19);
             this.Item9CostLabel.TabIndex = 10;
             this.Item9CostLabel.Text = "2049,00 BYN";
+            this.Item9CostLabel.Click += new System.EventHandler(this.Item9Button_Click);
             // 
             // label37
             // 
@@ -849,9 +907,17 @@
             this.panel1.Size = new System.Drawing.Size(1100, 870);
             this.panel1.TabIndex = 5;
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(258, 1038);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 80);
+            this.label1.TabIndex = 17;
+            this.label1.Text = " ";
+            // 
             // sortComboBox
             // 
-            this.sortComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.sortComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.sortComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sortComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sortComboBox.Font = new System.Drawing.Font("Arial Narrow", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1029,9 +1095,10 @@
             this.CategoryPanel.Controls.Add(this.PrinterCategory);
             this.CategoryPanel.Controls.Add(this.MonitorCategory);
             this.CategoryPanel.Controls.Add(this.HeadsetCategory);
+            this.CategoryPanel.Controls.Add(this.PhonePanel);
             this.CategoryPanel.Location = new System.Drawing.Point(20, 104);
             this.CategoryPanel.Name = "CategoryPanel";
-            this.CategoryPanel.Size = new System.Drawing.Size(350, 381);
+            this.CategoryPanel.Size = new System.Drawing.Size(350, 456);
             this.CategoryPanel.TabIndex = 12;
             // 
             // CancelButton
@@ -1042,21 +1109,49 @@
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CancelButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(42)))), ((int)(((byte)(42)))));
-            this.CancelButton.Location = new System.Drawing.Point(23, 305);
+            this.CancelButton.Location = new System.Drawing.Point(25, 375);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(302, 45);
+            this.CancelButton.Size = new System.Drawing.Size(300, 45);
             this.CancelButton.TabIndex = 13;
             this.CancelButton.Text = "Сбросить фильтры";
             this.CancelButton.UseVisualStyleBackColor = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // label1
+            // SearchTextBox
             // 
-            this.label1.Location = new System.Drawing.Point(258, 1038);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 80);
-            this.label1.TabIndex = 17;
-            this.label1.Text = " ";
+            this.SearchTextBox.BackColor = System.Drawing.Color.Gray;
+            this.SearchTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.SearchTextBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.SearchTextBox.Font = new System.Drawing.Font("Arial", 11.2F);
+            this.SearchTextBox.ForeColor = System.Drawing.Color.White;
+            this.SearchTextBox.Location = new System.Drawing.Point(10, 31);
+            this.SearchTextBox.Multiline = true;
+            this.SearchTextBox.Name = "SearchTextBox";
+            this.SearchTextBox.Size = new System.Drawing.Size(290, 24);
+            this.SearchTextBox.TabIndex = 18;
+            this.SearchTextBox.TextChanged += new System.EventHandler(this.SearchTextBox_TextChanged);
+            // 
+            // PhoneLabel
+            // 
+            this.PhoneLabel.AutoSize = true;
+            this.PhoneLabel.BackColor = System.Drawing.Color.Gray;
+            this.PhoneLabel.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PhoneLabel.ForeColor = System.Drawing.Color.Silver;
+            this.PhoneLabel.Location = new System.Drawing.Point(12, 8);
+            this.PhoneLabel.Name = "PhoneLabel";
+            this.PhoneLabel.Size = new System.Drawing.Size(65, 21);
+            this.PhoneLabel.TabIndex = 9;
+            this.PhoneLabel.Text = "Поиск:";
+            // 
+            // PhonePanel
+            // 
+            this.PhonePanel.BackColor = System.Drawing.Color.Gray;
+            this.PhonePanel.Controls.Add(this.SearchTextBox);
+            this.PhonePanel.Controls.Add(this.PhoneLabel);
+            this.PhonePanel.Location = new System.Drawing.Point(25, 300);
+            this.PhonePanel.Name = "PhonePanel";
+            this.PhonePanel.Size = new System.Drawing.Size(300, 60);
+            this.PhonePanel.TabIndex = 19;
             // 
             // CatalogForm
             // 
@@ -1099,6 +1194,8 @@
             this.panel1.PerformLayout();
             this.CategoryPanel.ResumeLayout(false);
             this.CategoryPanel.PerformLayout();
+            this.PhonePanel.ResumeLayout(false);
+            this.PhonePanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1183,5 +1280,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox sortComboBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox SearchTextBox;
+        private System.Windows.Forms.Panel PhonePanel;
+        private System.Windows.Forms.Label PhoneLabel;
     }
 }

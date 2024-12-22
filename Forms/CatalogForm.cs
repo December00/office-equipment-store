@@ -313,7 +313,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("laptop");
             this.ChosenCategoryLabel.Text = "Ноутбуки";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void PrinterCategory_Click(object sender, EventArgs e)
@@ -322,7 +322,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("printer");
             this.ChosenCategoryLabel.Text = "Принтеры";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void MonitorCategory_Click(object sender, EventArgs e)
@@ -332,7 +332,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("monitor");
             this.ChosenCategoryLabel.Text = "Мониторы";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void HeadsetCategory_Click(object sender, EventArgs e)
@@ -342,7 +342,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("headset");
             this.ChosenCategoryLabel.Text = "Гарнитура";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void TVCategory_Click(object sender, EventArgs e)
@@ -352,7 +352,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("TV");
             this.ChosenCategoryLabel.Text = "Телевизоры";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void PCCategory_Click(object sender, EventArgs e)
@@ -362,7 +362,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("PC");
             this.ChosenCategoryLabel.Text = "Персональные компьютеры";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void OtherCategory_Click(object sender, EventArgs e)
@@ -373,7 +373,7 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.FillByType("other");
             this.ChosenCategoryLabel.Text = "Другое";
             Reset();
-            Reload();
+            SearchTextBox_TextChanged(sender, e);
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -384,8 +384,10 @@ namespace АРМ_продавца_офисной_техники
             techniqueList.Fill();
             this.ChosenCategoryLabel.Text = "Каталог";
             this.sortComboBox.SelectedIndex = -1;
+            this.SearchTextBox.Text = "";           
             Reset();
             Reload();
+           
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -478,6 +480,10 @@ namespace АРМ_продавца_офисной_техники
 
         private void sortComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (sortComboBox.SelectedItem == null)
+            {
+                return;
+            }
             if (sortComboBox.SelectedItem.ToString() == "По возрастанию цены") {
                 techniqueList.ListSortByCost();
                 Reload();
@@ -490,6 +496,16 @@ namespace АРМ_продавца_офисной_техники
             }
 
         }
-        
+
+       
+        private void SearchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            TechniqueList search = new TechniqueList();
+            search = techniqueList.Search(this.SearchTextBox.Text);
+            TechniqueList temp = techniqueList;
+            techniqueList = search;
+            Reload();
+            techniqueList = temp;
+        }
     }
 }

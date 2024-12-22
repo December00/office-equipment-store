@@ -79,6 +79,7 @@
             this.LogTextBox.Name = "LogTextBox";
             this.LogTextBox.Size = new System.Drawing.Size(290, 22);
             this.LogTextBox.TabIndex = 2;
+            this.LogTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LogTextBox_KeyDown);
             // 
             // PasTextBox
             // 
@@ -90,8 +91,10 @@
             this.PasTextBox.Location = new System.Drawing.Point(10, 32);
             this.PasTextBox.Multiline = true;
             this.PasTextBox.Name = "PasTextBox";
+            this.PasTextBox.PasswordChar = '*';
             this.PasTextBox.Size = new System.Drawing.Size(290, 22);
             this.PasTextBox.TabIndex = 3;
+            this.PasTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasTextBox_KeyDown);
             // 
             // Button
             // 
@@ -273,6 +276,7 @@
             this.Name = "RegAuthForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RegAuthForm_KeyDown);
             this.TopPanel.ResumeLayout(false);
             this.LogPanel.ResumeLayout(false);
             this.LogPanel.PerformLayout();

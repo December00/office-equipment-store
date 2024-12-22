@@ -91,6 +91,7 @@ namespace АРМ_продавца_офисной_техники
                         catalog.Show();
                         this.Hide();
                     }
+                    this.PasTextBox.Text = "";
                 }
             }
             else
@@ -101,6 +102,30 @@ namespace АРМ_продавца_офисной_техники
         private void ExitLabel_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void RegAuthForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                Button_Click(sender, e);
+            }
+        }
+
+        private void PasTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Button_Click(sender, e);
+            }
+        }
+
+        private void LogTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Button_Click(sender, e);
+            }
         }
     }
 }

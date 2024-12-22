@@ -184,6 +184,7 @@ namespace АРМ_продавца_офисной_техники
                 else
                 {
                     tech.Update();
+                    techniqueList.Fill();
                 }
             }
             catch (Exception ex)

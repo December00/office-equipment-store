@@ -203,6 +203,19 @@ namespace АРМ_продавца_офисной_техники.Classes
                 --right;
             }
         }
+        public TechniqueList Search(string s)
+        {
+            TechniqueList searchList = new TechniqueList();
+            for(int i = 0; i < curLength; i++)
+            {
+                if(((list[i].manufacturer + " " + list[i].model)).ToLower().Contains(s.ToLower()))
+                {
+                    searchList.list[searchList.curLength] = list[i];
+                    searchList.curLength++;
+                }
+            }
+            return searchList;
+        }
     }
 }
 

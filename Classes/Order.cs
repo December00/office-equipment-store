@@ -113,6 +113,22 @@ namespace АРМ_продавца_офисной_техники.Classes
                 return false;
             }
         }
+        /*public void ChangeAmount()
+        {
+            for (int i = 0; i < basket.items.curLength; i++)
+            {
+                var item = basket.items.list[i];
+
+
+                MySqlCommand updateCommand = new MySqlCommand("UPDATE warehouse SET amount = amount - @amount WHERE manufacturer = @manufacturer AND model = @model", db.getConnection());
+                updateCommand.Parameters.AddWithValue("@amount", item.amount);
+                updateCommand.Parameters.AddWithValue("@manufacturer", item.manufacturer);
+                updateCommand.Parameters.AddWithValue("@model", item.model);
+                updateCommand.ExecuteNonQuery();
+
+
+            }
+        }*/
         public void DeleteOrder()
         {
             DB db = new DB();
@@ -135,7 +151,7 @@ namespace АРМ_продавца_офисной_техники.Classes
             }
             catch (Exception ex ){ MessageBox.Show(ex.ToString()); }
 
-           db.closeConnection();
+            db.closeConnection();
 
         }
         public void AcceptOrder() { 

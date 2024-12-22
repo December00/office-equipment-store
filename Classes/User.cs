@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,23 +14,37 @@ namespace АРМ_продавца_офисной_техники.Classes
     public class User
     {
         public string login;
-        string password;
+        private string password;
+
         public User(string login, string pas)
         {
             this.login = login;
-            this.password = pas;
+            this.password = HashPassword(pas); 
         }
+
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2")); 
+                }
+                return builder.ToString();
+            }
+        }
+
         public bool Authorization()
         {
             DB db = new DB();
-
             DataTable table = new DataTable();
-            
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL AND `pas` = @uP", db.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = login;
-            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = password;
+            command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = password; 
 
             adapter.SelectCommand = command;
             adapter.Fill(table);
@@ -44,9 +59,10 @@ namespace АРМ_продавца_офисной_техники.Classes
                 return false;
             }
         }
+
         private bool IsEnterValid()
         {
-            if (login == "" || password == "")
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Поля должны быть заполнены");
                 return false;
@@ -62,9 +78,7 @@ namespace АРМ_продавца_офисной_техники.Classes
                 return false;
             }
             DB db = new DB();
-
             DataTable table = new DataTable();
-
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE `login` = @uL", db.getConnection());
@@ -83,13 +97,13 @@ namespace АРМ_продавца_офисной_техники.Classes
                 return true;
             }
         }
+
         public void Registration()
         {
             DB db = new DB();
-
             MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`login`, `pas`) VALUES (@login, @pas)", db.getConnection());
             command.Parameters.Add("@login", MySqlDbType.VarChar).Value = login;
-            command.Parameters.Add("@pas", MySqlDbType.VarChar).Value = password;
+            command.Parameters.Add("@pas", MySqlDbType.VarChar).Value = password; 
 
             db.openConnection();
 
@@ -99,7 +113,6 @@ namespace АРМ_продавца_офисной_техники.Classes
                     MessageBox.Show("Аккаунт успешно зарегистрирован");
                 else
                     MessageBox.Show("Ошибка создания аккаунта");
-
             }
             db.closeConnection();
         }

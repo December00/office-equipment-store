@@ -59,6 +59,7 @@ namespace АРМ_продавца_офисной_техники
             this.RegActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(87))))); ;
             this.AuthActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96)))));
             this.WTDLabel.Text = "Зарегистрируйтесь, чтобы продолжить";
+            this.Button.Text = "Регистрация";
             auth = false;
         }
 
@@ -69,6 +70,7 @@ namespace АРМ_продавца_офисной_техники
             this.RegActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(96)))), ((int)(((byte)(96))))); ;
             this.AuthActLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(171)))), ((int)(((byte)(87)))));
             this.WTDLabel.Text = "Войдите, чтобы продолжить";
+            this.Button.Text = "Войти";
             auth = true;
         }
 
